@@ -118,16 +118,19 @@ function Post({ posts, loading, deletePost, editPost }) {
                       showMore === idx && "max-h-full",
                     )}
                   />
-                  {post.description.split("\n").length > 3 && (
-                    <Button
-                      className="text-blue-500 hover:underline"
-                      onClick={() => setShowMore(showMore === idx ? null : idx)}
-                      variant="none"
-                      size="none"
-                    >
-                      {showMore === idx ? "Show Less" : "Show More"}
-                    </Button>
-                  )}
+                  {post.description.split("\n").length > 5 ||
+                    (post.description.length > 100 && (
+                      <Button
+                        className="text-blue-500 hover:underline"
+                        onClick={() =>
+                          setShowMore(showMore === idx ? null : idx)
+                        }
+                        variant="none"
+                        size="none"
+                      >
+                        {showMore === idx ? "Show Less" : "Show More"}
+                      </Button>
+                    ))}
                 </div>
 
                 {post.img && (
