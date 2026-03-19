@@ -110,10 +110,10 @@ function PostModal({
 
         <Button
           type="submit"
-          className="self-end"
           size={"sm"}
           disabled={isSubmitting}
           isLoading={isSubmitting}
+          className={"max-w-40 self-end min-w-40"}
         >
           {type === "edit" ? "Update Post" : "Create Post"}
         </Button>
