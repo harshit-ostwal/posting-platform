@@ -1,19 +1,20 @@
+import Footer from "./components/common/footer";
 import Navbar from "./components/common/navbar";
+import CreatePost from "./components/common/posts/create-post";
 import Post from "./components/common/posts/post";
-import Posts from "./constants/posts";
-import User from "./constants/user";
+import { usePosts } from "./hooks/usePosts";
 
 function App() {
-  const filteredPosts = Posts.map((post) => {
-    const user = User.find((user) => user.id === post.userId);
-    return { ...post, user };
-  });
+  const { filteredPosts, loading } = usePosts();
 
   return (
-    <div className="w-11/12 md:w-4/5 lg:w-3/4 xl:w-1/2 mx-auto flex flex-col gap-10">
+    <div className="w-11/12 sm:border-x lg:w-1/4 mx-auto min-h-screen flex flex-col">
       <Navbar />
-
-      <Post posts={filteredPosts} />
+      <main className="sm:px-5 flex flex-col gap-10 h-auto flex-1">
+        <CreatePost />
+        <Post posts={filteredPosts} loading={loading} />
+      </main>
+      <Footer />
     </div>
   );
 }
