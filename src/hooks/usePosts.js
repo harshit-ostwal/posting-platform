@@ -55,10 +55,16 @@ export function usePosts() {
     setPosts((prev) => prev.filter((post) => post.id !== postId));
   };
 
-  const editPost = (postId, newDescription) => {
+  const editPost = (postId, newDescription, newImage) => {
     setPosts((prev) =>
       prev.map((post) =>
-        post.id === postId ? { ...post, description: newDescription } : post,
+        post.id === postId
+          ? {
+              ...post,
+              description: newDescription,
+              ...(newImage && { img: URL.createObjectURL(newImage) }),
+            }
+          : post,
       ),
     );
   };

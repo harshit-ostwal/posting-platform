@@ -29,7 +29,7 @@ function PostModal({
   const onSubmit = (data) => {
     try {
       if (type === "edit") {
-        editPost(id.id, data.description);
+        editPost(id.id, data.description, data?.image?.[0]);
       } else {
         createPost(data.description, data?.image?.[0]);
       }
