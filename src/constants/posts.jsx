@@ -55,6 +55,66 @@ Creating a new stacking context with <b class="text-blue-500">isolation: isolate
     alt: "CSS code",
     createdAt: new Date(Date.now() - 172800000).toLocaleString(),
   },
+  {
+    id: 6,
+    userId: 5,
+    description: `Just finished building my first <b class="text-blue-500">full-stack app</b> with Next.js + Prisma + PostgreSQL. 🎉
+
+The developer experience is incredible — schema migrations, type-safe queries, and server actions all in one place.
+
+If you haven't tried this stack yet, I highly recommend it. Happy to answer questions!`,
+    img: "https://images.unsplash.com/photo-1627398242454-45a1465c2479",
+    alt: "Full stack development",
+    createdAt: new Date(Date.now() - 259200000).toLocaleString(),
+  },
+  {
+    id: 7,
+    userId: 6,
+    description: `Reminder: <b class="text-blue-500">accessibility is not optional.</b>
+
+Semantic HTML, ARIA labels, and keyboard navigation aren't extras — they're part of writing good code.
+
+I did an a11y audit on our app last week and found 30+ issues hiding in plain sight. Start early, not after launch. ♿`,
+    img: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6",
+    alt: "Accessibility in web design",
+    createdAt: new Date(Date.now() - 345600000).toLocaleString(),
+  },
+  {
+    id: 8,
+    userId: 7,
+    description: `TypeScript tip of the day: use <b class="text-blue-500">satisfies</b> instead of type casting.
+
+Instead of \`as MyType\`, \`satisfies MyType\` validates the shape without losing inferred literal types.
+
+Small change, huge win for type safety. Your future self will thank you. 🦺`,
+    img: "https://images.unsplash.com/photo-1516116216624-53e697fedbea",
+    alt: "TypeScript code",
+    createdAt: new Date(Date.now() - 432000000).toLocaleString(),
+  },
+  {
+    id: 9,
+    userId: 8,
+    description: `Open source contribution milestone: my <b class="text-blue-500">first PR got merged</b> into a major library today! 🎊
+
+It was just a docs fix, but it taught me how large codebases are structured, how maintainers communicate, and how to write a good PR description.
+
+Start small. Every contribution counts. 💪`,
+    img: "https://images.unsplash.com/photo-1556075798-4825dfaaf498",
+    alt: "Open source contribution",
+    createdAt: new Date(Date.now() - 518400000).toLocaleString(),
+  },
+  {
+    id: 10,
+    userId: 3,
+    description: `Performance tip: stop over-fetching data. 🚫
+
+Using <b class="text-blue-500">React Query</b> with smart cache invalidation cut our API calls by 60%.
+
+Stale-while-revalidate, background refetching, and optimistic updates — it handles it all. If you're still doing manual fetch in useEffect, it's time to upgrade your data-fetching game.`,
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    alt: "Performance metrics dashboard",
+    createdAt: new Date(Date.now() - 604800000).toLocaleString(),
+  },
 ];
 
 export default Posts;
