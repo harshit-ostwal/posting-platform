@@ -2,11 +2,7 @@ const Posts = [
   {
     id: 1,
     userId: 1,
-    description: `Just shipped a major feature for our peer code review platform! 🚀
-
-The new <b class="text-blue-500">real-time collaboration</b> mode lets you comment directly on specific lines of code.
-
-Big shoutout to everyone who gave feedback during beta. This one's for you. 🙌`,
+    description: `Just shipped a major feature for our peer code review platform! 🚀`,
     img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
     alt: "Code on a screen",
     createdAt: new Date().toLocaleString(),

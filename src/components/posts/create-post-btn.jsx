@@ -4,9 +4,12 @@ import { ImageComp } from "@/components/ui/image";
 import { Image, Smile } from "lucide-react";
 import React from "react";
 
-function CreatePost() {
+function CreatePostBtn({ setShowModal }) {
   return (
-    <div className="flex flex-col sm:flex-row gap-6 w-full sm:items-center justify-between select-none border border-border duration-300 p-5 rounded-xl cursor-pointer">
+    <div
+      onClick={() => setShowModal(true)}
+      className="flex flex-col sm:flex-row gap-6 w-full sm:items-center justify-between select-none border border-border duration-300 p-5 rounded-xl cursor-pointer"
+    >
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <ImageComp
           src="https://avatars.githubusercontent.com/u/105328634"
@@ -31,4 +34,4 @@ function CreatePost() {
   );
 }
 
-export default CreatePost;
+export default CreatePostBtn;

@@ -55,37 +55,28 @@ function Post({ posts, loading }) {
                 dangerouslySetInnerHTML={{ __html: post?.description }}
                 className={cn(
                   "overflow-hidden max-h-28 whitespace-pre-wrap",
-                  showMore === idx && "max-h-none",
+                  showMore === idx && "max-h-full",
                 )}
               />
-              <span className="self-start">
-                {showMore === idx ? (
+              {post.description.split("").length >= 200 && (
+                <span className="self-start">
                   <Button
                     className={"text-blue-500 hover:underline"}
-                    onClick={() => setShowMore(null)}
+                    onClick={() => setShowMore(showMore === idx ? null : idx)}
                     variant={"none"}
                     size="none"
                   >
                     {showMore === idx ? "Show Less" : "Show More"}
                   </Button>
-                ) : (
-                  <Button
-                    className={"text-blue-500 hover:underline"}
-                    onClick={() => setShowMore(idx)}
-                    variant={"none"}
-                    size="none"
-                  >
-                    {showMore === idx ? "Show Less" : "Show More"}
-                  </Button>
-                )}
-              </span>
+                </span>
+              )}
             </div>
 
-            {post.image && (
+            {post.img && (
               <ImageComp
                 src={post?.img}
                 alt={post?.alt}
-                className={"aspect-video"}
+                className={"aspect-5/4"}
               />
             )}
 
