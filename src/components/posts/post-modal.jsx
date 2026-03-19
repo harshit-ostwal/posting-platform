@@ -51,7 +51,7 @@ function PostModal({
       <form
         onSubmit={handleSubmit(onSubmit)}
         onClick={(e) => e.stopPropagation()}
-        className="max-w-2xl w-full bg-background px-4 py-10 rounded-lg shadow-lg min-h-96 border border-border flex flex-col gap-4"
+        className="max-w-2xl w-full bg-background p-6 rounded-lg shadow-lg min-h-96 border border-border flex flex-col gap-6"
       >
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
@@ -73,7 +73,13 @@ function PostModal({
           </Heading>
         </div>
         <div className="flex flex-col gap-2">
+          <label htmlFor="description">
+            <Heading size="p" className={"font-medium"}>
+              Description
+            </Heading>
+          </label>
           <Textarea
+            id="description"
             {...register("description", {
               required: "Description is required",
             })}
@@ -86,12 +92,20 @@ function PostModal({
           )}
         </div>
 
-        <Input
-          type="file"
-          accept="image/*"
-          className={"file-input file-input-bordered file-input-sm w-full"}
-          {...register("image")}
-        />
+        <div className="flex flex-col gap-2">
+          <label htmlFor="image">
+            <Heading size="p" className={"font-medium"}>
+              Image
+            </Heading>
+          </label>
+          <Input
+            id="image"
+            type="file"
+            accept="image/*"
+            className={"file-input file-input-bordered file-input-sm w-full"}
+            {...register("image")}
+          />
+        </div>
 
         <Button type="submit" className="self-end" size={"sm"}>
           {type === "edit" ? "Update Post" : "Create Post"}
