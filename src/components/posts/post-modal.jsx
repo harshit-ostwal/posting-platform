@@ -6,6 +6,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
 import { Input } from "../ui/input";
+import { Spinner } from "../ui/spinner";
 
 function PostModal({
   showModal,
@@ -19,19 +20,19 @@ function PostModal({
     register,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
       description: id?.description || "",
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       if (type === "edit") {
-        editPost(id.id, data.description, data?.image?.[0]);
+        await editPost(id.id, data.description, data?.image?.[0]);
       } else {
-        createPost(data.description, data?.image?.[0]);
+        await createPost(data.description, data?.image?.[0]);
       }
       setShowModal(false);
       reset();
@@ -107,7 +108,13 @@ function PostModal({
           />
         </div>
 
-        <Button type="submit" className="self-end" size={"sm"}>
+        <Button
+          type="submit"
+          className="self-end"
+          size={"sm"}
+          disabled={isSubmitting}
+          isLoading={isSubmitting}
+        >
           {type === "edit" ? "Update Post" : "Create Post"}
         </Button>
       </form>

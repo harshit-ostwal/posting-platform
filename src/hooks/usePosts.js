@@ -40,15 +40,20 @@ export function usePosts() {
   });
 
   const createPost = (description, image) => {
-    const newPost = {
-      id: posts.length + 1,
-      userId: 1,
-      description,
-      img: image ? URL.createObjectURL(image) : null,
-      alt: "User uploaded image",
-      createdAt: new Date().toLocaleString(),
-    };
-    setPosts((prev) => [newPost, ...prev]);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const newPost = {
+          id: posts.length + 1,
+          userId: 1,
+          description,
+          img: image ? URL.createObjectURL(image) : null,
+          alt: "User uploaded image",
+          createdAt: new Date().toLocaleString(),
+        };
+        setPosts((prev) => [newPost, ...prev]);
+        resolve();
+      }, 800);
+    });
   };
 
   const deletePost = (postId) => {
@@ -56,17 +61,22 @@ export function usePosts() {
   };
 
   const editPost = (postId, newDescription, newImage) => {
-    setPosts((prev) =>
-      prev.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              description: newDescription,
-              ...(newImage && { img: URL.createObjectURL(newImage) }),
-            }
-          : post,
-      ),
-    );
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setPosts((prev) =>
+          prev.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  description: newDescription,
+                  ...(newImage && { img: URL.createObjectURL(newImage) }),
+                }
+              : post,
+          ),
+        );
+        resolve();
+      }, 800);
+    });
   };
 
   return {
