@@ -10,7 +10,7 @@ const headingVariants = cva("text-pretty", {
       h4: "text-2xl font-medium lg:text-3xl",
       h5: "text-lg md:text-xl lg:text-2xl",
       h6: "max-w-2xl text-base md:text-lg lg:text-xl",
-      p: "text-muted-foreground max-w-2xl text-base md:text-lg",
+      p: "text-muted-foreground max-w-xl text-base md:text-lg",
       ul: "list-inside list-disc space-y-4 text-[16px] font-medium",
       li: "text-[16px]",
     },

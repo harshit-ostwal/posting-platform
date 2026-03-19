@@ -10,7 +10,7 @@ import {
   MoreHorizontal,
   Share2,
 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import PostModal from "./post-modal";
 
 function Post({ posts, loading, deletePost, editPost }) {
@@ -65,8 +65,8 @@ function Post({ posts, loading, deletePost, editPost }) {
         {posts &&
           posts.length > 0 &&
           posts.map((post, idx) => (
-            <>
-              <div key={idx} className="grid gap-4 border-b pb-4">
+            <React.Fragment key={idx}>
+              <div className="grid gap-4 border-b pb-4">
                 <div className=" flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <ImageComp
@@ -118,19 +118,17 @@ function Post({ posts, loading, deletePost, editPost }) {
                       showMore === idx && "max-h-full",
                     )}
                   />
-                  {post.description.split("\n").length > 5 ||
-                    (post.description.length > 100 && (
-                      <Button
-                        className="text-blue-500 hover:underline"
-                        onClick={() =>
-                          setShowMore(showMore === idx ? null : idx)
-                        }
-                        variant="none"
-                        size="none"
-                      >
-                        {showMore === idx ? "Show Less" : "Show More"}
-                      </Button>
-                    ))}
+                  {(post.description.split("\n").length > 5 ||
+                    post.description.length > 100) && (
+                    <Button
+                      className="text-blue-500 hover:underline"
+                      onClick={() => setShowMore(showMore === idx ? null : idx)}
+                      variant="none"
+                      size="none"
+                    >
+                      {showMore === idx ? "Show Less" : "Show More"}
+                    </Button>
+                  )}
                 </div>
 
                 {post.img && (
@@ -148,20 +146,18 @@ function Post({ posts, loading, deletePost, editPost }) {
                 <div className="h-px bg-border" />
 
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center justify-between w-full">
-                    <Button size={"icon"} variant={"none"}>
-                      <Heart /> {post.likes.count}
-                    </Button>
-                    <Button size={"icon"} variant={"none"}>
-                      <MessagesSquare /> {post.comments.count}
-                    </Button>
-                    <Button size={"icon"} variant={"none"}>
-                      <Bookmark /> {post.bookmarks.count}
-                    </Button>
-                    <Button size={"icon"} variant={"none"}>
-                      <Share2 />
-                    </Button>
-                  </div>
+                  <Button size={"icon"} variant={"none"}>
+                    <Heart /> {post.likes.count}
+                  </Button>
+                  <Button size={"icon"} variant={"none"}>
+                    <MessagesSquare /> {post.comments.count}
+                  </Button>
+                  <Button size={"icon"} variant={"none"}>
+                    <Bookmark /> {post.bookmarks.count}
+                  </Button>
+                  <Button size={"icon"} variant={"none"}>
+                    <Share2 />
+                  </Button>
                 </div>
               </div>
 
@@ -174,7 +170,7 @@ function Post({ posts, loading, deletePost, editPost }) {
                   id={posts[showEditModal]}
                 />
               )}
-            </>
+            </React.Fragment>
           ))}
       </div>
     </>

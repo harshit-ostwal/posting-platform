@@ -42,6 +42,7 @@ function PostModal({
 
   return (
     <div
+      onClick={() => setShowModal(false)}
       className={cn(
         showModal ? "flex" : "hidden",
         "fixed inset-0 z-1000 backdrop-blur-xs items-center justify-center p-2",
@@ -49,7 +50,8 @@ function PostModal({
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-2xl w-full bg-background p-4 rounded-lg shadow-lg min-h-96 border border-border flex flex-col gap-4"
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-2xl w-full bg-background px-4 py-10 rounded-lg shadow-lg min-h-96 border border-border flex flex-col gap-4"
       >
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
