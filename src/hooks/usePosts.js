@@ -6,6 +6,7 @@ import Posts from "../constants/posts";
 import Users from "../constants/users";
 
 export function usePosts() {
+  const [posts, setPosts] = useState(Posts);
   const [loading, setLoading] = useState(fetchPosts);
 
   function fetchPosts() {
@@ -13,7 +14,7 @@ export function usePosts() {
     return true;
   }
 
-  const filteredPosts = Posts.map((post) => {
+  const filteredPosts = posts.map((post) => {
     const user = Users.find((user) => user.id === post.userId);
     const likes = Likes.filter((like) => like.postId === post.id);
     const bookmarks = Bookmarks.filter(
@@ -38,5 +39,36 @@ export function usePosts() {
     };
   });
 
-  return { filteredPosts, loading, fetchPosts };
+  const createPost = (description, image) => {
+    const newPost = {
+      id: posts.length + 1,
+      userId: 1,
+      description,
+      img: image ? URL.createObjectURL(image) : null,
+      alt: "User uploaded image",
+      createdAt: new Date().toLocaleString(),
+    };
+    setPosts((prev) => [newPost, ...prev]);
+  };
+
+  const deletePost = (postId) => {
+    setPosts((prev) => prev.filter((post) => post.id !== postId));
+  };
+
+  const editPost = (postId, newDescription) => {
+    setPosts((prev) =>
+      prev.map((post) =>
+        post.id === postId ? { ...post, description: newDescription } : post,
+      ),
+    );
+  };
+
+  return {
+    filteredPosts,
+    loading,
+    fetchPosts,
+    deletePost,
+    editPost,
+    createPost,
+  };
 }
