@@ -1,4 +1,3 @@
-import React from "react";
 import { Bell, Search } from "lucide-react";
 import { Button } from "../ui/button";
 import { Heading } from "../ui/headings";
@@ -6,7 +5,7 @@ import { Heading } from "../ui/headings";
 function Navbar() {
   return (
     <nav className="flex items-center justify-between h-20 sm:px-5 mb-5 sm:mb-10 sm:border-b sm:shadow-sm">
-    <Heading size="h4">Reactors</Heading>
+      <Heading size="h4">Reactors</Heading>
 
       <div className="flex items-center gap-6">
         <Button

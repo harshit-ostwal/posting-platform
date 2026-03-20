@@ -17,7 +17,7 @@ function ImageComp({
       height={height}
       className={cn("object-cover object-center select-none", className)}
       draggable={false}
-      loading="lazy"
+      loading="eager"
       fetchPriority="high"
       {...props}
     />

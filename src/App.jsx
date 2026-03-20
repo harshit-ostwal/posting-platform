@@ -12,7 +12,7 @@ function App() {
     usePosts();
 
   return (
-    <div className="w-11/12 relative sm:border-x lg:w-1/4 mx-auto min-h-screen flex flex-col">
+    <div className="w-11/12 relative sm:border-x font-GoogleSans lg:w-1/4 mx-auto min-h-screen flex flex-col">
       <Navbar />
       <main className="sm:px-5 gap-10 flex flex-col h-auto flex-1">
         <CreatePostBtn setShowModal={setShowModal} />

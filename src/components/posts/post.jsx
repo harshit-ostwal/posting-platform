@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import DOMPurify from "dompurify";
 import { Heading } from "@/components/ui/headings";
 import { ImageComp } from "@/components/ui/image";
 import { Spinner } from "@/components/ui/spinner";
@@ -112,14 +113,17 @@ function Post({ posts, loading, deletePost, editPost }) {
                 <div className="flex flex-col group gap-4 justify-between">
                   <Heading
                     size="h6"
-                    dangerouslySetInnerHTML={{ __html: post?.description }}
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(post?.description),
+                    }}
                     className={cn(
                       "overflow-hidden max-h-28 whitespace-pre-wrap",
                       showMore === idx && "max-h-full",
                     )}
                   />
-                  {(post.description.split("\n").length > 5 ||
-                    post.description.length > 100) && (
+
+                  {(post?.description.split("\n").length > 5 ||
+                    post?.description.length > 100) && (
                     <Button
                       className="text-blue-500 hover:underline"
                       onClick={() => setShowMore(showMore === idx ? null : idx)}
